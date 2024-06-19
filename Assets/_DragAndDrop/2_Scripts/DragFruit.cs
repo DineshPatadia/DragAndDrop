@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DragFruit : MonoBehaviour
 {
-    [SerializeField]
     public bool isCorrectBasket;
 
     private Vector3 mOffset;
@@ -10,6 +9,8 @@ public class DragFruit : MonoBehaviour
 
     private float mZCoord;
 
+
+    
     void OnMouseDown()
     {
         if (!isCorrectBasket)
@@ -18,7 +19,6 @@ public class DragFruit : MonoBehaviour
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffset = gameObject.transform.position - GetMouseWorldPos();
         }
-        //Debug.Log("Down");
     }
 
     private void OnMouseUp()
@@ -40,7 +40,6 @@ public class DragFruit : MonoBehaviour
         {
             yStatic = GetMouseWorldPos() + mOffset;
             transform.position = new Vector3(yStatic.x, 2f, yStatic.z);
-            //Debug.Log("Drag");
         }
     }
 

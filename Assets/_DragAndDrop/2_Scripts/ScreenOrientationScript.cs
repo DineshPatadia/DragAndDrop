@@ -13,6 +13,8 @@ public class ScreenOrientationScript : MonoBehaviour
     [SerializeField]
     public Orientation selectOrientation;
 
+
+    
     private void Awake()
     {
         switch (selectOrientation)
@@ -33,9 +35,11 @@ public class ScreenOrientationScript : MonoBehaviour
 
     }
 
+
+    //Changing screen Orientation according to the selected value
     void ChangeOrientation(ScreenOrientation orientation)
     {
         Screen.orientation = orientation;
-        Debug.Log(orientation);
+        //Debug.Log(orientation);
     }
 }

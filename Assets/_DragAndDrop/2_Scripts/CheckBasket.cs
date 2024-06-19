@@ -2,28 +2,38 @@ using UnityEngine;
 
 public class CheckBasket : MonoBehaviour
 {
-/*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(this.tag))
 
-            Debug.Log("Correct");
-        else
-            Debug.Log("Incorrect");
+    public delegate void WrongBasket();
+    public static event WrongBasket wrongBasket;
 
-        other.GetComponent<Rigidbody>().useGravity = false;
-    }
-*/
+   
+
+    //Check if the dropped fruits are correct or not
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag(this.tag))
+        if (other.gameObject.CompareTag(tag))
         {
-            Debug.Log("Correct");
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(other.contacts[0].point);
+
+            if (!other.gameObject.GetComponent<DragFruit>().isCorrectBasket)
+            {
+                DragDropGameManager.Instance.AddStars(screenPos);
+
+                
+            }
+
             other.gameObject.GetComponent<DragFruit>().isCorrectBasket = true;
+
         }
         else
-            Debug.Log("Incorrect");
+        {
+            if (wrongBasket != null)
+                wrongBasket();
+        }
+            
 
     }
+
+
 
 }
