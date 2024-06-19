@@ -12,6 +12,7 @@ TagManager:
   - Orange
   - Brown
   - Watermelon
+  - Car
   layers:
   - Default
   - TransparentFX
