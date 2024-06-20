@@ -13,6 +13,11 @@ TagManager:
   - Brown
   - Watermelon
   - Car
+  - Teddy
+  - Lego
+  - Truck
+  - Block
+  - Train
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class SFXManager : MonoBehaviour
     private void OnEnable()
     {
         CheckBasket.wrongBasket += WrongBasketSFX;
+        CheckBox.wrongBox += WrongBasketSFX;
         DragDropGameManager.addStar += PlayAddStarSFX;
         DragDropGameManager.onGameOver += PlayGameOverSFX;
     }
@@ -24,6 +25,7 @@ public class SFXManager : MonoBehaviour
     private void OnDisable()
     {
         CheckBasket.wrongBasket -= WrongBasketSFX;
+        CheckBox.wrongBox -= WrongBasketSFX;
         DragDropGameManager.addStar -= PlayAddStarSFX;
         DragDropGameManager.onGameOver -= PlayGameOverSFX;
     }
@@ -44,6 +46,8 @@ public class SFXManager : MonoBehaviour
         gameoverSFX.Play();
     }
 
+    //We can turn off or turn on all audios in the game
+/*
     public void EnableSFX()
     {
         bgMusicSFX.volume = 1;
@@ -58,5 +62,5 @@ public class SFXManager : MonoBehaviour
         wrongBasketSFX.volume = 0;
         gameoverSFX.volume = 0;
         correctBasketSFX.volume = 0;
-    }
+    }*/
 }

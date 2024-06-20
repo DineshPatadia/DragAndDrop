@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_DragAndDrop/0_Scenes/1_FruitBasket3D.unity
     guid: d82fc20b854770542b94617191b9a3a0
+  - enabled: 1
+    path: Assets/_DragAndDrop/0_Scenes/2_ToysMatching2D.unity
+    guid: 053ba1e2ed99455479ddc165d7b9ff84
   m_configObjects: {}

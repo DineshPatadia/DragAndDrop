@@ -25,7 +25,7 @@ public class UIAnimatorScript : MonoBehaviour
     }
 
 
-    //Calling Lerp animations after delays
+    //Calling Lerp animations of game buttons after delays
     IEnumerator ManageButtonsAnimation()
     {
         StartCoroutine(Lerp(game1Button, startValue, endValue1,1f));

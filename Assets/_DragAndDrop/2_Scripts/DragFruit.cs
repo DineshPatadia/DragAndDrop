@@ -10,7 +10,12 @@ public class DragFruit : MonoBehaviour
     private float mZCoord;
 
 
-    
+    private void Start()
+    {
+        DragDropGameManager.Instance.totalObjects = 18;
+    }
+
+
     void OnMouseDown()
     {
         if (!isCorrectBasket)

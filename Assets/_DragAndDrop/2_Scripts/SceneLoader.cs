@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] Slider loadingSlider;
-
     
-        
+    //Trigger from button click
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName));

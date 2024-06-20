@@ -17,6 +17,7 @@ public class ScreenOrientationScript : MonoBehaviour
     
     private void Awake()
     {
+
         switch (selectOrientation)
         {
             case Orientation.LandscapeLeft:

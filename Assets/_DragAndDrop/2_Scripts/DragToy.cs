@@ -6,36 +6,53 @@ public class DragToy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 {
     [SerializeField]Image image;
 
+    public bool isCorrectBox;
+    public bool isParentSet;
+
+
+
     [HideInInspector]
     public Transform parentAfterDrag;
 
     Transform rootParent;
 
+    [HideInInspector]
     public Vector3 initialPosition;
 
     private void Start()
     {
-        rootParent = GameObject.Find("GameRoomBG").transform;
+        DragDropGameManager.Instance.totalObjects = 21;
+        rootParent = GameObject.Find("GameParent").transform;
         initialPosition = transform.position;
     }
 
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parentAfterDrag = transform.parent;
-        transform.SetParent(rootParent);
-        transform.SetAsLastSibling();
-        image.raycastTarget = false;
+        if (!isCorrectBox)
+        {
+            parentAfterDrag = transform.parent;
+            transform.SetParent(rootParent);
+            transform.SetAsLastSibling();
+            image.raycastTarget = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        if (!isCorrectBox)
+            transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (isParentSet)
+            return;
+
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        if (isCorrectBox)
+            isParentSet = true;
 
     }
 }

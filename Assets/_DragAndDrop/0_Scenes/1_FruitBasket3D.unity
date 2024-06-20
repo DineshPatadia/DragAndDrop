@@ -4602,7 +4602,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 1_FruitBasket
+          m_StringArgument: 1_FruitBasket3D
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1395368923
@@ -5603,6 +5603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialPanel: {fileID: 1141003787}
   gameOverPanel: {fileID: 1507409563}
+  totalObjects: 18
   timerText: {fileID: 1978049629}
   startingTime: 90
   starsParent: {fileID: 539020802}

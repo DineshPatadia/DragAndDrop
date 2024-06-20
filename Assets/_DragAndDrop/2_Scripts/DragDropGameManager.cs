@@ -6,6 +6,8 @@ public class DragDropGameManager : MonoBehaviour
 {
     public static DragDropGameManager Instance;
 
+    public delegate void OnGameStart();
+    public static event OnGameStart onGameStart;
 
     public delegate void GameOverEvent();
     public static event GameOverEvent onGameOver;
@@ -18,7 +20,7 @@ public class DragDropGameManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject tutorialPanel;
     [SerializeField] GameObject gameOverPanel;
-    int totalFruits = 18;
+    public int totalObjects = 18;
     int currentFruits = 0;
 
     [Header("Timer")]
@@ -51,8 +53,12 @@ public class DragDropGameManager : MonoBehaviour
         isGameStarted = false;
     }
 
+
+
     private void Update()
     {
+
+        //If game started turn timer on
         if (isGameStarted)
         {
             currentTime -= Time.deltaTime;
@@ -66,14 +72,20 @@ public class DragDropGameManager : MonoBehaviour
         }
     }
 
+
+
+    //Trigger from close button of tutorial panel
     public void StartGame()
     {
         tutorialPanel.SetActive(false);
         isGameStarted = true;
+
+        if (onGameStart != null)
+            onGameStart();
     }
 
    
-
+    //If user drops all the objects or time is over
     void GameOver()
     {
         gameOverPointsText.text = points.ToString();
@@ -87,6 +99,7 @@ public class DragDropGameManager : MonoBehaviour
         
     }
 
+    //Add 10 points/stars for each drop 
     public void AddStars(Vector2 position)
     {
         pointsCount = points;
@@ -101,6 +114,8 @@ public class DragDropGameManager : MonoBehaviour
         StartCoroutine(StartStarAnimation(position));
     }
 
+
+    //Sequential turn on the star points & trigger it's animation from point of drop to Total points star
     IEnumerator StartStarAnimation(Vector2 startValue)
     {
         float timeDuration = 1f;
@@ -128,7 +143,6 @@ public class DragDropGameManager : MonoBehaviour
     IEnumerator Lerp(Transform transform, Vector2 startValue, Vector2 endValue, float timeDuration)
     {
         float timeElapsed = 0;
-        float xLerp = 0;
         Vector2 initialPos = transform.position;
         Vector2 endVector = Vector2.zero;
 
@@ -147,7 +161,7 @@ public class DragDropGameManager : MonoBehaviour
             addStar();
         pointsText.text = pointsCount.ToString();
 
-        if (currentFruits == totalFruits)
+        if (currentFruits == totalObjects)
             GameOver();
 
     }
